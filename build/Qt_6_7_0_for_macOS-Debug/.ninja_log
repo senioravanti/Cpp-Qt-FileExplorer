@@ -1,0 +1,27 @@
+# ninja log v5
+22	778	1714481769246481944	CMakeFiles/CppFinder.dir/mainwindow.cpp.o	8d8195d84fc8b74e
+212	945	1714480196429154533	CMakeFiles/CppFinder.dir/CppFinder_autogen/mocs_compilation.cpp.o	f73e66b1c6bb5b7f
+4	21	1714481768495238473	/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CppFinder_autogen/timestamp	d2acf3d34d8fd08c
+4	21	1714481768495238473	CppFinder_autogen/mocs_compilation.cpp	d2acf3d34d8fd08c
+4	21	1714481768495238473	/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CppFinder_autogen/mocs_compilation.cpp	d2acf3d34d8fd08c
+778	874	1714481769344301056	CppFinder.app/Contents/MacOS/CppFinder	7635b1bd5682b615
+212	947	1714480196429793661	CMakeFiles/CppFinder.dir/main.cpp.o	cb13229e3dc45317
+4	21	1714481768495238473	CppFinder_autogen/timestamp	d2acf3d34d8fd08c
+3	23	1714481822165492958	CppFinder_autogen/timestamp	d2acf3d34d8fd08c
+3	23	1714481822165492958	CppFinder_autogen/mocs_compilation.cpp	d2acf3d34d8fd08c
+3	23	1714481822165492958	/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CppFinder_autogen/timestamp	d2acf3d34d8fd08c
+3	23	1714481822165492958	/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CppFinder_autogen/mocs_compilation.cpp	d2acf3d34d8fd08c
+24	713	1714481822850557417	CMakeFiles/CppFinder.dir/mainwindow.cpp.o	8d8195d84fc8b74e
+713	807	1714481822944914314	CppFinder.app/Contents/MacOS/CppFinder	7635b1bd5682b615
+3	22	1714481861007203701	CppFinder_autogen/timestamp	d2acf3d34d8fd08c
+3	22	1714481861007203701	CppFinder_autogen/mocs_compilation.cpp	d2acf3d34d8fd08c
+3	22	1714481861007203701	/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CppFinder_autogen/timestamp	d2acf3d34d8fd08c
+3	22	1714481861007203701	/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CppFinder_autogen/mocs_compilation.cpp	d2acf3d34d8fd08c
+23	771	1714481861751232948	CMakeFiles/CppFinder.dir/mainwindow.cpp.o	8d8195d84fc8b74e
+771	868	1714481861849862245	CppFinder.app/Contents/MacOS/CppFinder	7635b1bd5682b615
+3	23	1714482009188263006	CppFinder_autogen/timestamp	d2acf3d34d8fd08c
+3	23	1714482009188263006	CppFinder_autogen/mocs_compilation.cpp	d2acf3d34d8fd08c
+3	23	1714482009188263006	/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CppFinder_autogen/timestamp	d2acf3d34d8fd08c
+3	23	1714482009188263006	/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CppFinder_autogen/mocs_compilation.cpp	d2acf3d34d8fd08c
+24	708	1714482009868722741	CMakeFiles/CppFinder.dir/mainwindow.cpp.o	8d8195d84fc8b74e
+708	802	1714482009964521104	CppFinder.app/Contents/MacOS/CppFinder	7635b1bd5682b615

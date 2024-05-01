@@ -1,0 +1,9 @@
+/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/CppFinder.dir
+/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/edit_cache.dir
+/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/rebuild_cache.dir
+/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/list_install_components.dir
+/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/install.dir
+/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/install/local.dir
+/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/install/strip.dir
+/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/CppFinder_autogen_timestamp_deps.dir
+/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/CppFinder_autogen.dir

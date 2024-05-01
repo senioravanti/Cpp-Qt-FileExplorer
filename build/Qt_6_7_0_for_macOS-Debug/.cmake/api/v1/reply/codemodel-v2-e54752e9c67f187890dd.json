@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-bb682100cbe103abf43c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "CppFinder",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "CppFinder::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CppFinder-Debug-9e9bd201f3594e7944d3.json",
+					"name" : "CppFinder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "CppFinder_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CppFinder_autogen-Debug-5be795616399b23c3491.json",
+					"name" : "CppFinder_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "CppFinder_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CppFinder_autogen_timestamp_deps-Debug-30d7d742ddd13489f193.json",
+					"name" : "CppFinder_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/stradiavanti/__Projects/Cpp Qt/CppFinder/build/Qt_6_7_0_for_macOS-Debug",
+		"source" : "/Users/stradiavanti/__Projects/Cpp Qt/CppFinder"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
