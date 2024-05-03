@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(CppFinder VERSION 0.1 LANGUAGES CXX)
+project(FileExplorer VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -23,6 +23,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(CppFinder
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        res.qrc
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET CppFinder APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
