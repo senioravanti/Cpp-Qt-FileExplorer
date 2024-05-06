@@ -1,41 +1,82 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include <QFileSystemModel>
 #include <QSplitter>
-#include <QTreeView>
-#include <QListView>
-#include <QLineEdit>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QList>
+#include <QFileInfo>
+
+#include <QIcon>
+
+#include <QPushButton>
+
+#include <QFileInfo>
+
+#include <QDesktopServices>
+#include <QUrl>
+
+#include <QMouseEvent>
+
+#include <QAction>
+#include <QCursor>
 
 MainWindow::MainWindow (QWidget *parent)
     : QMainWindow (parent), ui (new Ui::MainWindow) {
   ui->setupUi (this);
 
-  QVBoxLayout * topLevelLayout = new QVBoxLayout();
+  treeModel = new QFileSystemModel();
+  listModel = new QFileSystemModel();
 
-  topLevelLayout->setContentsMargins(12, 12, 12, 12);
-  topLevelLayout->setSpacing(12);
+  treeModel->setRootPath(QDir::rootPath());
+  ui->treeView->setModel(treeModel);
+  ui->treeView->setRootIndex(treeModel->index(QDir::rootPath()));
 
-  ui->centralwidget->setLayout(topLevelLayout);
+  ui->treeView->hideColumn(1);
+  ui->treeView->hideColumn(2);
+  ui->treeView->hideColumn(3);
 
-  QLineEdit * lineEdit = new QLineEdit();
-  lineEdit->setText(QDir::homePath());
+  ui->listView->setModel(listModel);
 
-  QSplitter * splitter = new QSplitter();
-  splitter->setHandleWidth(0);
+  ui->currentPath->setText(QDir::homePath());
+  ui->listView->setViewMode(QListView::IconMode);
 
-  topLevelLayout->addWidget(lineEdit);
-  topLevelLayout->addWidget(splitter);
+  on_currentPath_changed();
 
-  QTreeView * mainTreeView = new QTreeView(splitter), * curTreeView = new QTreeView(splitter);
+  ui->listView->setUniformItemSizes(true);
+  ui->listView->setTextElideMode(Qt::ElideNone);
+  ui->listView->setWordWrap(true);
 
-  QFileSystemModel * model = new QFileSystemModel;
-  model->setRootPath(QDir::homePath());
-  mainTreeView->setModel(model);
+  ui->splitter->setStretchFactor(0, 1);
+  ui->splitter->setStretchFactor(1, 3);
 
-  mainTreeView->setRootIndex(model->index(QDir::homePath()));
 
+
+
+  // --- Сигналы и слоты
+  connect(ui->currentPath, &QLineEdit::returnPressed, this, &MainWindow::on_currentPath_changed);
+  connect(ui->upArrowButton, &QPushButton::pressed, this, [=](){
+    QDir dir(ui->currentPath->text()); dir.cdUp();
+    ui->currentPath->setText(dir.absolutePath());
+    on_currentPath_changed();
+  });
+  connect(ui->listView, &QAbstractItemView::doubleClicked, this, [=](const QModelIndex &index){
+    QString curPath = listModel->filePath(index);
+
+    QFileInfo fileInfo(curPath);
+    if (fileInfo.isDir()) {
+      ui->listView->setRootIndex(index);
+      ui->currentPath->setText(curPath);
+    } else {
+      QDesktopServices::openUrl(QUrl::fromLocalFile(curPath));
+    }
+
+  });
+
+}
+
+void MainWindow::on_currentPath_changed(){
+  listModel->setRootPath(ui->currentPath->text());
+  ui->listView->setRootIndex(listModel->index(ui->currentPath->text()));
 }
 
 MainWindow::~MainWindow () { delete ui; }
