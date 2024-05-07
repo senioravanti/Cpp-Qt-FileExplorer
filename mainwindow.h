@@ -10,6 +10,8 @@
 
 #include <QMenu>
 
+#include <QAction>
+
 #include "mylistview.h"
 
 QT_BEGIN_NAMESPACE
@@ -25,6 +27,7 @@ class MainWindow : public QMainWindow {
 
 public slots:
   void on_currentPath_changed();
+  void on_createFolderAction();
 
 public:
   MainWindow (QWidget *parent = nullptr);
@@ -38,6 +41,11 @@ private:
   QFileSystemModel * treeModel, * listModel;
   MyListView * listView;
 
+  // Операции контектсного меню
+  QAction * createFolder, * changeView, * sortItems, * getInfo;
+
   // Методы
+protected:
+  void setupListViewContextMenu();
 };
 #endif // MAINWINDOW_H

@@ -16,11 +16,13 @@
 #include <QUrl>
 
 #include <QMouseEvent>
-
-#include <QAction>
-#include <QCursor>
+#include <QMenu>
+#include <QInputDialog>
 
 #include <QLineEdit>
+#include <QKeySequence>
+
+
 
 MainWindow::MainWindow (QWidget *parent)
     : QMainWindow (parent), ui (new Ui::MainWindow) {
@@ -56,6 +58,8 @@ MainWindow::MainWindow (QWidget *parent)
   ui->splitter->setStretchFactor(0, 1);
   ui->splitter->setStretchFactor(1, 3);
 
+  setupListViewContextMenu();
+
   // --- Сигналы и слоты
   connect(ui->currentPath, &QLineEdit::returnPressed, this, &MainWindow::on_currentPath_changed);
   connect(ui->upArrowButton, &QPushButton::pressed, this, [=](){
@@ -75,6 +79,7 @@ MainWindow::MainWindow (QWidget *parent)
     }
 
   });
+  connect(createFolder, &QAction::triggered, this, &MainWindow::on_createFolderAction);
 
 }
 
@@ -83,7 +88,37 @@ void MainWindow::on_currentPath_changed(){
   listView->setRootIndex(listModel->index(ui->currentPath->text()));
 }
 
+void MainWindow::on_createFolderAction() {
+  bool ok;
+  QString folderName = QInputDialog::getText(this, "Введите название каталога", "Название каталога", QLineEdit::Normal, "", &ok);
+  if (ok && !folderName.isEmpty()) {
+    QDir curDir = QDir(ui->currentPath->text());
+    if (curDir.mkdir(folderName)) {
+      on_currentPath_changed();
+    }
+  }
+}
 
+void MainWindow::setupListViewContextMenu() {
+  QMenu * menu = listView->getContextMenu();
+
+  createFolder = new QAction("Создать каталог");
+  createFolder->setShortcut(QKeySequence(""));
+
+  getInfo = new QAction("Получить информацию");
+
+  changeView = new QAction("Вид");
+  sortItems = new QAction("Сортировать по");
+
+  menu->addAction(createFolder);
+  menu->addSeparator();
+  menu->addAction(getInfo);
+  menu->addSeparator();
+  menu->addAction(changeView);
+  menu->addAction(sortItems);
+
+
+}
 
 
 MainWindow::~MainWindow () { delete ui; }
