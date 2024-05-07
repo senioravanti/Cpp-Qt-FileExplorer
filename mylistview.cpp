@@ -1,4 +1,8 @@
 #include "mylistview.h"
+#include <QMenu>
+#include <QContextMenuEvent>
+#include <QListView>
+#include <QAction>
 
 MyListView::MyListView (QWidget * parent) : QListView(parent)
 {

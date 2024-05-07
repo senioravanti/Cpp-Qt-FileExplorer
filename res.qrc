@@ -1,5 +1,7 @@
 <RCC>
-    <qresource prefix="/styles"/>
+    <qresource prefix="/styles">
+        <file>style.css</file>
+    </qresource>
     <qresource prefix="/icons">
         <file>left.svg</file>
         <file>right.svg</file>

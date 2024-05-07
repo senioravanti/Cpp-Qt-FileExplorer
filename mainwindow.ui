@@ -156,7 +156,6 @@
         <bool>false</bool>
        </attribute>
       </widget>
-      <widget class="QListView" name="listView"/>
      </widget>
     </item>
    </layout>
@@ -167,7 +166,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>36</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

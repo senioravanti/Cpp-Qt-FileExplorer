@@ -20,6 +20,8 @@
 #include <QAction>
 #include <QCursor>
 
+#include <QLineEdit>
+
 MainWindow::MainWindow (QWidget *parent)
     : QMainWindow (parent), ui (new Ui::MainWindow) {
   ui->setupUi (this);
@@ -35,22 +37,24 @@ MainWindow::MainWindow (QWidget *parent)
   ui->treeView->hideColumn(2);
   ui->treeView->hideColumn(3);
 
-  ui->listView->setModel(listModel);
+  // QObject * obj = ui->listView;
+  listView = new MyListView();
+  this->ui->splitter->addWidget(listView);
+  // ui->listView = new MyListView(ui->splitter);
+
+  listView->setModel(listModel);
 
   ui->currentPath->setText(QDir::homePath());
-  ui->listView->setViewMode(QListView::IconMode);
+  listView->setViewMode(QListView::IconMode);
 
   on_currentPath_changed();
 
-  ui->listView->setUniformItemSizes(true);
-  ui->listView->setTextElideMode(Qt::ElideNone);
-  ui->listView->setWordWrap(true);
+  listView->setUniformItemSizes(true);
+  listView->setTextElideMode(Qt::ElideNone);
+  listView->setWordWrap(true);
 
   ui->splitter->setStretchFactor(0, 1);
   ui->splitter->setStretchFactor(1, 3);
-
-
-
 
   // --- Сигналы и слоты
   connect(ui->currentPath, &QLineEdit::returnPressed, this, &MainWindow::on_currentPath_changed);
@@ -59,12 +63,12 @@ MainWindow::MainWindow (QWidget *parent)
     ui->currentPath->setText(dir.absolutePath());
     on_currentPath_changed();
   });
-  connect(ui->listView, &QAbstractItemView::doubleClicked, this, [=](const QModelIndex &index){
+  connect(listView, &QAbstractItemView::doubleClicked, this, [=](const QModelIndex &index){
     QString curPath = listModel->filePath(index);
 
     QFileInfo fileInfo(curPath);
     if (fileInfo.isDir()) {
-      ui->listView->setRootIndex(index);
+      listView->setRootIndex(index);
       ui->currentPath->setText(curPath);
     } else {
       QDesktopServices::openUrl(QUrl::fromLocalFile(curPath));
@@ -76,7 +80,10 @@ MainWindow::MainWindow (QWidget *parent)
 
 void MainWindow::on_currentPath_changed(){
   listModel->setRootPath(ui->currentPath->text());
-  ui->listView->setRootIndex(listModel->index(ui->currentPath->text()));
+  listView->setRootIndex(listModel->index(ui->currentPath->text()));
 }
+
+
+
 
 MainWindow::~MainWindow () { delete ui; }

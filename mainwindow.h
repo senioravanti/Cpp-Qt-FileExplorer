@@ -10,8 +10,11 @@
 
 #include <QMenu>
 
+#include "mylistview.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
+
 class MainWindow;
 }
 QT_END_NAMESPACE
@@ -25,6 +28,7 @@ public slots:
 
 public:
   MainWindow (QWidget *parent = nullptr);
+
   ~MainWindow ();
 
 private:
@@ -32,7 +36,7 @@ private:
   Ui::MainWindow * ui;
 
   QFileSystemModel * treeModel, * listModel;
-
+  MyListView * listView;
 
   // Методы
 };
