@@ -11,8 +11,9 @@
 #include <QMenu>
 
 #include <QAction>
+#include <QList>
+#include "explorertab.h"
 
-#include "mylistview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -26,11 +27,13 @@ class MainWindow : public QMainWindow {
 
 
 public slots:
-  void on_currentPath_changed();
   void on_createFolderAction();
+  void on_addTabAction_triggered();
 
 public:
   MainWindow (QWidget *parent = nullptr);
+
+  enum class ChangeDirSource { ListView, TreeView, AdressBar, TabChange, NavButton};
 
   ~MainWindow ();
 
@@ -38,14 +41,24 @@ private:
   // Свойства
   Ui::MainWindow * ui;
 
-  QFileSystemModel * treeModel, * listModel;
-  MyListView * listView;
+  QFileSystemModel * fileSystemModel;
 
+  QString homePath;
+
+  ExplorerTab * curTab;
   // Операции контектсного меню
-  QAction * createFolder, * changeView, * sortItems, * getInfo;
+  QMenu * rootFolderMenu, * selectedItemMenu;
+
+  // QAction * createFolder, * createFile ,  * sortItems, * getInfo, * standartView, * iconsView, * rename;
+
+  QList<QString> visitedPaths;
+  QString poppedPath;
 
   // Методы
 protected:
   void setupListViewContextMenu();
+  void on_changeDir(const QString&, ChangeDirSource);
+  void on_changeView(QListView::ViewMode);
+  void locateInTreeView(const QString&);
 };
 #endif // MAINWINDOW_H

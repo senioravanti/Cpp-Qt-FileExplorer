@@ -18,6 +18,6 @@ void MyListView::contextMenuEvent(QContextMenuEvent * event) {
 
 }
 
-QMenu * MyListView::getContextMenu() {
-  return this->contextMenu;
+void MyListView::setContextMenu(QMenu * contextMenu) {
+  this->contextMenu = contextMenu;
 }

@@ -20,6 +20,8 @@ set(PROJECT_SOURCES
         res.qrc
         mylistview.h
         mylistview.cpp
+        explorertab.h
+        explorertab.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

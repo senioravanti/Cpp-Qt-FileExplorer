@@ -6,5 +6,19 @@
         <file>left.svg</file>
         <file>right.svg</file>
         <file>up.svg</file>
+        <file>copy.svg</file>
+        <file>cut.svg</file>
+        <file>icons_view.svg</file>
+        <file>list-tree.svg</file>
+        <file>new_file.svg</file>
+        <file>new_folder.svg</file>
+        <file>remove.svg</file>
+        <file>rename.svg</file>
+        <file>standart_view.svg</file>
+        <file>info.svg</file>
+        <file>view.svg</file>
+        <file>paste.svg</file>
+        <file>open_in_terminal.svg</file>
+        <file>sortBy.svg</file>
     </qresource>
 </RCC>

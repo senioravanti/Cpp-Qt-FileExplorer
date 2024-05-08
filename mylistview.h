@@ -11,7 +11,7 @@ class MyListView : public QListView {
 public:
   MyListView (QWidget * parent = nullptr);
 
-  QMenu * getContextMenu();
+  void setContextMenu(QMenu *);
 
 private:
   QMenu * contextMenu;
