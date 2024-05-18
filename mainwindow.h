@@ -6,6 +6,8 @@
 #include <QListView>
 #include <QLineEdit>
 
+#include <QProcess>
+
 #include <QFileSystemModel>
 
 #include <QMenu>
@@ -28,7 +30,19 @@ class MainWindow : public QMainWindow {
 
 public slots:
   void on_createFolderAction();
+  void on_createFileAction();
+
   void on_addTabAction_triggered();
+  void on_closeTabAction_triggered(int index);
+  void on_currentTabChanged(int index);
+
+  void on_itemsSelected(bool);
+
+  void on_copyAction_triggered();
+  void on_cutAction_triggered();
+  void on_pasteAction_triggered();
+
+  void on_openInTerminalAction_triggered();
 
 public:
   MainWindow (QWidget *parent = nullptr);
@@ -54,11 +68,21 @@ private:
   QList<QString> visitedPaths;
   QString poppedPath;
 
+  // Копирование, перемещение, вставка
+  QList<QString> itemsToCopy;
+  QList<QString> itemsToMove;
+
+  QProcess * process;
+
   // Методы
 protected:
-  void setupListViewContextMenu();
+  void initContextMenu();
   void on_changeDir(const QString&, ChangeDirSource);
   void on_changeView(QListView::ViewMode);
   void locateInTreeView(const QString&);
+
+  void moveDirectoryContentsToTrashRecursively(const QString &);
+  void removeFilesAndDirectoriesRecursively(bool);
+  void copyOrMoveDirectorySubtree(const QString & from, const QString & to, bool isOverwrite, bool isMove);
 };
 #endif // MAINWINDOW_H

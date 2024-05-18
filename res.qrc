@@ -12,13 +12,14 @@
         <file>list-tree.svg</file>
         <file>new_file.svg</file>
         <file>new_folder.svg</file>
-        <file>remove.svg</file>
-        <file>rename.svg</file>
+        <file>move_to_trash.svg</file>
         <file>standart_view.svg</file>
         <file>info.svg</file>
         <file>view.svg</file>
         <file>paste.svg</file>
         <file>open_in_terminal.svg</file>
         <file>sortBy.svg</file>
+        <file>permanently_delete.svg</file>
+        <file>rename.svg</file>
     </qresource>
 </RCC>

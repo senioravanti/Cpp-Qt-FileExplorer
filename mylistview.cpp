@@ -4,20 +4,36 @@
 #include <QListView>
 #include <QAction>
 
-MyListView::MyListView (QWidget * parent) : QListView(parent)
+MyListView::MyListView (QMenu * rootFolderMenu, QMenu * selectedItemMenu, QWidget * parent)
+:
+  QListView(parent),
+  rootFolderMenu(rootFolderMenu),
+  selectedItemMenu(selectedItemMenu)
 {
   // --- Инициализация контекстного меню
-  contextMenu = new QMenu(this);
 }
 
 void MyListView::contextMenuEvent(QContextMenuEvent * event) {
 
   if (event->reason() == QContextMenuEvent::Mouse) {
-    contextMenu->exec(event->globalPos());
+    if (this->indexAt(event->pos()).isValid()) {
+      this->selectedItemMenu->exec(event->globalPos());
+    } else {
+      this->rootFolderMenu->exec(event->globalPos());
+    }
   }
 
 }
 
-void MyListView::setContextMenu(QMenu * contextMenu) {
-  this->contextMenu = contextMenu;
+void
+MyListView::selectionChanged (const QItemSelection& selected,
+                              const QItemSelection& deselected) {
+  QListView::selectionChanged(selected, deselected);
+
+  if (selected.isEmpty()) {
+    emit itemsSelected(false);
+  } else {
+    emit itemsSelected(true);
+  }
+
 }

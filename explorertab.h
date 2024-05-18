@@ -13,20 +13,29 @@ class ExplorerTab : public QWidget {
 public:
   explicit ExplorerTab(QFileSystemModel * model, QMenu * rootFolderContextMenu, QMenu * selectedItemMenu, const QString& path = "", QWidget *parent = nullptr);
 
-  MyListView * getListView();
   void changeDir(const QString&);
+
+  // Геттеры
+
+  MyListView * getListView();
+
+  QList<QString> getSelection();
+
   QString getCurDir();
+
+
 
   ~ExplorerTab();
 
 // public slots:
   // void on_openItem(const QModelIndex&);
 signals:
-  void itemOpened(const QModelIndex&);
+  void itemOpened(QModelIndex index);
+
 private:
   QVBoxLayout * mainLayout;
   // QDir * curDir;
-  QFileSystemModel * model;
+  QFileSystemModel * fileSystemModel;
   // MainWindow * mainWindow;
 
   MyListView * listView;

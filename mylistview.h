@@ -9,15 +9,18 @@
 class MyListView : public QListView {
   Q_OBJECT
 public:
-  MyListView (QWidget * parent = nullptr);
+  MyListView (QMenu *, QMenu * , QWidget * parent = nullptr);
 
-  void setContextMenu(QMenu *);
+signals:
+  void itemsSelected(bool);
 
 private:
-  QMenu * contextMenu;
+  QMenu * rootFolderMenu, * selectedItemMenu;
 
 protected:
   void contextMenuEvent(QContextMenuEvent *) override;
+  void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) override;
+
 };
 
 #endif // MYLISTVIEW_H

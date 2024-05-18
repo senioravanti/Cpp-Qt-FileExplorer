@@ -184,7 +184,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>36</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -215,6 +215,7 @@
     <addaction name="separator"/>
     <addaction name="actionPaste"/>
     <addaction name="separator"/>
+    <addaction name="actionToTrash"/>
     <addaction name="actionRemove"/>
    </widget>
    <addaction name="menu"/>
@@ -316,9 +317,6 @@
    <property name="text">
     <string>Переименовать</string>
    </property>
-   <property name="shortcut">
-    <string>Return</string>
-   </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>
    </property>
@@ -356,13 +354,16 @@
   <action name="actionRemove">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/icons/remove.svg</normaloff>:/icons/remove.svg</iconset>
+     <normaloff>:/icons/permanently_delete.svg</normaloff>:/icons/permanently_delete.svg</iconset>
    </property>
    <property name="text">
-    <string>Удалить</string>
+    <string>Безвозвратно удалить</string>
+   </property>
+   <property name="toolTip">
+    <string>Безвозвратно удалить</string>
    </property>
    <property name="shortcut">
-    <string>Shift+Del</string>
+    <string>Ctrl+Shift+Backspace</string>
    </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>
@@ -393,6 +394,24 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+T</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionToTrash">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/icons/move_to_trash.svg</normaloff>:/icons/move_to_trash.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Переместить в корзину</string>
+   </property>
+   <property name="toolTip">
+    <string>Переместить в корзину</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Backspace</string>
    </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>
