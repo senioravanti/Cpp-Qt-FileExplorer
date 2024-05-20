@@ -13,7 +13,9 @@
 #include <QMenu>
 
 #include <QAction>
+
 #include <QList>
+
 #include "explorertab.h"
 
 
@@ -74,6 +76,8 @@ private:
 
   QProcess * process;
 
+  QMap<QString, QString> colors;
+
   // Методы
 protected:
   void initContextMenu();
@@ -84,5 +88,6 @@ protected:
   void moveDirectoryContentsToTrashRecursively(const QString &);
   void removeFilesAndDirectoriesRecursively(bool);
   void copyOrMoveDirectorySubtree(const QString & from, const QString & to, bool isOverwrite, bool isMove);
+
 };
 #endif // MAINWINDOW_H

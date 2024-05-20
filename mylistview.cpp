@@ -1,8 +1,4 @@
 #include "mylistview.h"
-#include <QMenu>
-#include <QContextMenuEvent>
-#include <QListView>
-#include <QAction>
 
 MyListView::MyListView (QMenu * rootFolderMenu, QMenu * selectedItemMenu, QWidget * parent)
 :
@@ -10,7 +6,6 @@ MyListView::MyListView (QMenu * rootFolderMenu, QMenu * selectedItemMenu, QWidge
   rootFolderMenu(rootFolderMenu),
   selectedItemMenu(selectedItemMenu)
 {
-  // --- Инициализация контекстного меню
 }
 
 void MyListView::contextMenuEvent(QContextMenuEvent * event) {
@@ -37,3 +32,5 @@ MyListView::selectionChanged (const QItemSelection& selected,
   }
 
 }
+
+

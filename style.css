@@ -1,0 +1,125 @@
+QWidget {
+ background: @bg;
+ background-clip: content;
+ border: @border_width;
+}
+QPushButton {
+ background-color: @btn;
+ color: @on_btn;
+ min-height: @control_size; max-height: @control_size;
+ min-width: @control_size; max-width: @control_size;
+ border-radius: 12px;
+}
+QPushButton:hover {
+ background-color: @on_btn;
+ color: @btn;
+}
+QPushButton:disabled {
+ background-color: @field;
+ color: @border_color;
+}
+QLineEdit {
+  min-height: @control_size; max-height: @control_size;
+}
+QSplitter {
+  border-top: @border_width solid @border_color;
+}
+QTreeView {
+  background-color: #DADBD0;
+}
+QPlainTextEdit {
+  background-color: @field;
+  color: @text;
+  placeholder-text-color: @border_color;
+  border: @border_width solid @border_color;
+}
+QLabel {
+  color: @text;
+}
+QTabWidget {
+  border-top: 2px solid black;
+  margin-top: 10px;
+}
+QTabWidget::tab-bar {
+  border-top: @border_width solid @border_color;
+}
+QListView {
+  background-color: @list_view;
+}
+QTabWidget::pane {
+  background-color: @list_view;
+  border-top: @border_width solid @border_color;
+  margin-top: -2px;
+  padding: 12px;
+}
+QMenu {
+  background: #E1E4D5;
+  border-radius: 8px;
+}
+QMenu::item {
+  padding-left: 12px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+QMenu::item:disabled {
+  color: #586249;
+}
+QMenu::icon {
+  padding-left: 12px;
+  padding-right: 6px;
+}
+QSplitter::handle {
+  background: none;
+  image: none;
+  width: 1px;
+  height: 1px;
+}
+QTabBar::tab {
+ background: @bg;
+ padding-left: @tab_padding; padding-right: @tab_padding; padding-bottom: @padding; padding-top: @padding;
+ border-bottom: @border_width solid @border_color;
+}
+QTabBar::tab:selected {
+ background: @field;
+ border-bottom: @border_width solid @on_btn;
+}
+QTabBar::close-button {
+  image: url(":/icons/close_button.svg");
+  subcontrol-postion: top center;
+}
+QGroupBox {
+   margin: 24px 0 0 0;
+   border-top: @border_width solid @border_color;
+   border-right: none;
+   border-left: none;
+   border-bottom: none;
+   padding: @padding;
+}
+QGroupBox::title {
+   subcontrol-origin: margin;
+   subcontrol-position: top center;
+}
+QGroupBox#solver_equation_1, QGroupBox#solver_equation_2, QGroupBox#solver_equation_3 {
+   margin: 10px 0 0 0;
+   border: @border_width solid @border_color;
+}
+QScrollBar:vertical {
+   border: none;
+   width: 10px;
+   background: @bg;
+   margin: @vertical_scroll_bar_height 0 @vertical_scroll_bar_height 0;
+}
+QScrollBar::handle:vertical {
+   background: "#C5C8B9";
+   min-height: @vertical_scroll_bar_height;
+   border-radius: @vertical_scroll_bar_border_radius;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+   border: none;
+   background: none;
+   height: 0px;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+   background: none;
+}
+

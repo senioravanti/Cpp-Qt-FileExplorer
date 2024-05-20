@@ -7,6 +7,7 @@
 #include <QMenu>
 #include <QFileSystemModel>
 #include "mylistview.h"
+#include "mydelegate.h"
 
 class ExplorerTab : public QWidget {
   Q_OBJECT
@@ -39,6 +40,8 @@ private:
   // MainWindow * mainWindow;
 
   MyListView * listView;
+  MyDelegate * delegate;
+
   QMenu * rootFolderMenu, * selectedItemMenu;
 
 };

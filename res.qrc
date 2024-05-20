@@ -21,5 +21,8 @@
         <file>sortBy.svg</file>
         <file>permanently_delete.svg</file>
         <file>rename.svg</file>
+        <file>close_button.svg</file>
+        <file>folder.png</file>
+        <file>file.png</file>
     </qresource>
 </RCC>

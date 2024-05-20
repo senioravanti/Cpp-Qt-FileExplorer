@@ -22,8 +22,8 @@ set(PROJECT_SOURCES
         mylistview.cpp
         explorertab.h
         explorertab.cpp
-        lineeditdelegate.h
-        lineeditdelegate.cpp
+        mydelegate.h
+        mydelegate.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

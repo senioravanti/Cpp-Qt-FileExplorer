@@ -1,14 +1,27 @@
-#ifndef LINEEDITDELEGATE_H
-#define LINEEDITDELEGATE_H
+#ifndef MYDELEGATE_H
+#define MYDELEGATE_H
 
 #include <QObject>
 #include <QStyledItemDelegate>
 #include <QLineEdit>
+#include <QPainter>
+#include <QTextDocument>
+#include <QFileInfo>
+#include <QFileSystemModel>
+#include <QFontMetrics>
+#include <QFileIconProvider>
 
-class LineEditDelegate : public QStyledItemDelegate {
+#include "mylistview.h"
+
+class MyDelegate : public QStyledItemDelegate {
   Q_OBJECT
 public:
-  LineEditDelegate(QWidget * parent = nullptr);
+  MyDelegate(QWidget * parent = nullptr);
+
+  void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const override;
+
+  QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override;
+
 
   QWidget * createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
@@ -21,6 +34,12 @@ public:
   // Обеспечивает правильное отображение виджета editor по отношению к представлению элемента модели с индексом index путем изменения его линейных размеров на зн., хр. в свойстве rect параметра option.
   void updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
+private:
+  // Свойства
+  int iconSizeIconMode, elementWidth;
+  int roundingRadius;
+  int textWidth;
+
 };
 
-#endif // LINEEDITDELEGATE_H
+#endif // MYDELEGATE_H

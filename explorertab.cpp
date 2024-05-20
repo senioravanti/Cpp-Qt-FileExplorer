@@ -11,6 +11,9 @@ ExplorerTab::ExplorerTab(QFileSystemModel * model, QMenu * rootFolderMenu, QMenu
   mainLayout = new QVBoxLayout(this);
 
   listView = new MyListView(rootFolderMenu, selectedItemMenu);
+  delegate = new MyDelegate(listView);
+
+  listView->setItemDelegate(delegate);
 
   mainLayout->addWidget(listView);
   mainLayout->setContentsMargins(0, 0, 0, 0);
@@ -22,14 +25,14 @@ ExplorerTab::ExplorerTab(QFileSystemModel * model, QMenu * rootFolderMenu, QMenu
   //
   listView->setEditTriggers(QAbstractItemView::EditKeyPressed);
   // ?
-  listView->setTextElideMode(Qt::ElideNone);
+  // listView->setTextElideMode(Qt::ElideNone);
   // Внешний вид элементов
   listView->setViewMode(QListView::IconMode);
   listView->setResizeMode(QListView::Adjust);
   listView->setMovement(QListView::Free);
   listView->setUniformItemSizes(true);
   listView->setWordWrap(true);
-  listView->setWrapping(true);
+  // listView->setWrapping(true);
 
   if (!path.isEmpty()) {
     changeDir(path);
@@ -68,6 +71,7 @@ QString ExplorerTab::getCurDir()
 ExplorerTab::~ExplorerTab()
 {
   // Очищаем память, выделенную под локальные для вкладки экземпляры
+  delete delegate;
   delete listView;
   delete mainLayout;
 }
