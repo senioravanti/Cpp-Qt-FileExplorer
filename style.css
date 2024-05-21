@@ -25,7 +25,7 @@ QSplitter {
   border-top: @border_width solid @border_color;
 }
 QTreeView {
-  background-color: #DADBD0;
+  background-color: @bg;
 }
 QPlainTextEdit {
   background-color: @field;
@@ -52,6 +52,20 @@ QTabWidget::pane {
   margin-top: -2px;
   padding: 12px;
 }
+QTabBar::tab {
+ background: @bg;
+ padding-left: @tab_padding; padding-right: @tab_padding; padding-bottom: @padding; padding-top: @padding;
+ border-bottom: @border_width solid @border_color;
+}
+QTabBar::tab:selected {
+ background: @field;
+ border-bottom: @border_width solid @accent;
+}
+QTabBar::close-button {
+  image: url(":/icons/close_button.svg");
+  subcontrol-postion: top center;
+}
+/* Меню */
 QMenu {
   background: #E1E4D5;
   border-radius: 8px;
@@ -73,19 +87,6 @@ QSplitter::handle {
   image: none;
   width: 1px;
   height: 1px;
-}
-QTabBar::tab {
- background: @bg;
- padding-left: @tab_padding; padding-right: @tab_padding; padding-bottom: @padding; padding-top: @padding;
- border-bottom: @border_width solid @border_color;
-}
-QTabBar::tab:selected {
- background: @field;
- border-bottom: @border_width solid @on_btn;
-}
-QTabBar::close-button {
-  image: url(":/icons/close_button.svg");
-  subcontrol-postion: top center;
 }
 QGroupBox {
    margin: 24px 0 0 0;
@@ -110,7 +111,7 @@ QScrollBar:vertical {
    margin: @vertical_scroll_bar_height 0 @vertical_scroll_bar_height 0;
 }
 QScrollBar::handle:vertical {
-   background: "#C5C8B9";
+   background: @scroll_color;
    min-height: @vertical_scroll_bar_height;
    border-radius: @vertical_scroll_bar_border_radius;
 }

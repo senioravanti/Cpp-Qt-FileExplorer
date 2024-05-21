@@ -10,6 +10,7 @@
 #include <QFileSystemModel>
 #include <QFontMetrics>
 #include <QFileIconProvider>
+#include <QTreeView>
 
 #include "mylistview.h"
 
@@ -36,9 +37,9 @@ public:
 
 private:
   // Свойства
-  int iconSizeIconMode, elementWidth;
+  int iconSizeIconMode, iconSizeListMode, iconOffset, elementWidth;
   int roundingRadius;
-  int textWidth;
+  int textWidth, textOffsetListMode;
 
 };
 

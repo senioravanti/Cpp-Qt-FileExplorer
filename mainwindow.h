@@ -58,6 +58,7 @@ private:
   Ui::MainWindow * ui;
 
   QFileSystemModel * fileSystemModel;
+  // MyDelegate * treeViewDelegate;
 
   QString homePath;
 

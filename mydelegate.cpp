@@ -4,8 +4,11 @@ MyDelegate::MyDelegate(QWidget * parent)
 :
   QStyledItemDelegate(parent),
   iconSizeIconMode{56},
+  iconSizeListMode{20},
+  iconOffset{12},
+  textOffsetListMode{3},
   elementWidth{72},
-  roundingRadius{8},
+  roundingRadius{12},
   textWidth{64}
 {}
 
@@ -17,24 +20,33 @@ MyDelegate::paint (QPainter* painter, const QStyleOptionViewItem& option,
   if (!index.isValid()) return;
 
   MyListView * listView = qobject_cast<MyListView*>(parent());
+  // QTreeView * treeView = qobject_cast<QTreeView*>(parent());
+
+  QString filePath;
+  QFileInfo fileInfo;
+  QBrush backgroundBrush = Qt::transparent;
+
+  if (option.state & QStyle::State_Selected) {
+
+    backgroundBrush = QColor::fromString("#B4CCBB");
+
+  }
+
+  painter->setRenderHint(QPainter::Antialiasing);
+  painter->setPen(Qt::NoPen);
+  painter->setBrush(backgroundBrush);
+  painter->drawRoundedRect(option.rect, roundingRadius, roundingRadius);
+
+  QString text;
+  QIcon icon;
 
   if (listView) {
-    QString filePath = index.data(QFileSystemModel::FilePathRole).toString();
-    QFileInfo fileInfo(filePath);
 
-    QBrush backgroundBrush = Qt::transparent;
-
-    if (option.state & QStyle::State_Selected) {
-
-      backgroundBrush = QColor::fromString("#A7D0B6");
-
-    }
-
-    painter->setPen(Qt::NoPen);
-    painter->setBrush(backgroundBrush);
+    text = index.data(Qt::DisplayRole).toString();
     painter->drawRoundedRect(option.rect, roundingRadius, roundingRadius);
 
-    QString text = index.data(Qt::DisplayRole).toString();
+    filePath = index.data(QFileSystemModel::FilePathRole).toString();
+    fileInfo.setFile(filePath);
 
     QFontMetrics fontMetrics(option.font);
     if (fontMetrics.horizontalAdvance(text) >= textWidth) {
@@ -46,27 +58,24 @@ MyDelegate::paint (QPainter* painter, const QStyleOptionViewItem& option,
     textOption.setAlignment(Qt::AlignHCenter);
     textOption.setWrapMode(QTextOption::NoWrap);
 
-    QIcon icon;
+    painter->setPen(QPen(QColor::fromString("#1A1C16")));
 
     if (fileInfo.isDir()) {
 
       icon = QIcon(":/icons/folder.png");
 
-    } else if (fileInfo.isFile()) {
-
-      icon = QIcon(":/icons/file.png");
+      icon.paint(painter, QRect(option.rect.x() + (option.rect.width() - iconSizeIconMode) / 2, option.rect.y(), iconSizeIconMode, iconSizeIconMode), Qt::AlignHCenter | Qt::AlignTop);
 
     } else {
 
       icon = QFileIconProvider().icon(fileInfo);
 
+      icon.paint(painter, QRect(option.rect.x() + (option.rect.width() - iconSizeIconMode) / 2, option.rect.y() + iconOffset, iconSizeIconMode, iconSizeIconMode), Qt::AlignHCenter | Qt::AlignTop);
+
     }
 
-    icon.paint(painter, QRect(option.rect.x() + (option.rect.width() - iconSizeIconMode) / 2, option.rect.y(), iconSizeIconMode, iconSizeIconMode), Qt::AlignHCenter | Qt::AlignTop);
-
-    painter->setPen(QPen(QColor::fromString("#1A1C16")));
-
     painter->drawText(QRect(option.rect.x() + (option.rect.width() - textWidth) / 2, option.rect.y() + iconSizeIconMode, textWidth, option.rect.height()), text, textOption);
+
   }
 }
 
@@ -105,7 +114,9 @@ MyDelegate::createEditor (QWidget* parent,
 void MyDelegate::updateEditorGeometry (QWidget * editor,
                                         const QStyleOptionViewItem& option,
                                         const QModelIndex& index) const {
-  editor->setGeometry(option.rect);
+  QRect rect = option.rect;
+  rect.setY(rect.y() + iconSizeIconMode - iconOffset);
+  editor->setGeometry(rect);
 }
 
 void
@@ -126,6 +137,5 @@ MyDelegate::setEditorData (
 
   QLineEdit * lineEdit = qobject_cast<QLineEdit * >(editor);
   lineEdit->setText(data);
-
 
 }

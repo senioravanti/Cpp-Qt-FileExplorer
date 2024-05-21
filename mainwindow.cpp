@@ -47,6 +47,9 @@ MainWindow::MainWindow (QWidget *parent)
   ui->treeView->setModel(fileSystemModel);
   ui->treeView->setRootIndex(fileSystemModel->index(""));
 
+  // treeViewDelegate = new MyDelegate(ui->treeView);
+  // ui->treeView->setItemDelegate(treeViewDelegate);
+
   // Правильно скрываем лишние столбцы
   QHeaderView * header = ui->treeView->header();
   for (int i = 1; i < header->count(); ++i) {

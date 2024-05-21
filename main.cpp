@@ -27,11 +27,13 @@ main (int argc, char *argv[]) {
 
   QMap<QString, QString> colors;
 
-  colors["@bg"] = "#EDEFE0";
+  colors["@bg"] = "#F0F2E3";
   colors["@list_view"] = "#FAFAEE";
+  colors["@scroll_color"] = "#B4CCBB";
+  colors["@accent"] = "#58C084";
   colors["@btn"] = "#FFD7E6";
   colors["@on_btn"] = "#8F4664";
-  colors["@field"] = "#E1E4D5";
+  colors["@field"] = "#E3ECD9";
   colors["@border_color"] = "#586249";
   colors["@text"] = "#1A1C16";
   colors["@border_width"] = "2px";
