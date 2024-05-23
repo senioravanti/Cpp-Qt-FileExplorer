@@ -5,7 +5,11 @@ MyDelegate::MyDelegate(QWidget * parent)
   QStyledItemDelegate(parent),
   iconSizeIconMode{56},
   iconSizeListMode{20},
-  iconOffset{12},
+#if defined Q_OS_MACOS
+  iconOffset{0},
+#elif defined Q_OS_WIN
+  iconOffset{14},
+#endif
   textOffsetListMode{3},
   elementWidth{72},
   roundingRadius{12},
